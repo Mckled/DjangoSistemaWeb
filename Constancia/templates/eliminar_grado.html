@@ -1,0 +1,25 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar Grado</title>
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h1 class="mb-4">Eliminar Grado</h1>
+        <div class="alert alert-warning" role="alert">
+            ¿Estás seguro de que deseas eliminar este grado <strong>{{ grado }}</strong>?
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Confirmar Eliminacion</button>
+            <a href="{% url 'lista_grados' %}" class="btn btn-secondary ms-2">Cancelar</a>
+        </form>
+    </div>
+    <!-- Bootstrap JS (optional) -->
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mt-5">Lista de Materias</h1>
+    <a href="{% url 'agregar_materia' %}" class="btn btn-primary mb-3">Agregar Materia</a>
+    <table class="table" id="materiasTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for materia in materias %}
+            <tr>
+                <td>{{ materia.id_Materia }}</td>
+                <td>{{ materia.Nombre_Materia }}</td>
+                <td>
+                    <a href="{% url 'editar_materia' materia.id_Materia %}" class="btn btn-primary btn-sm">Editar</a>
+                    <a href="{% url 'eliminar_materia' materia.id_Materia %}" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#materiasTable').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+            }
+        });
+    });
+</script>
+
+
+{% endblock %}

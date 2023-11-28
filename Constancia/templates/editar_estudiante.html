@@ -1,0 +1,78 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Estudiante</title>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <style>
+        #id_Cedula_Representante, #id_Cedula_Estudiante, #id_Apellidos_Estudiante, #id_Nombres_Estudiante, #id_Genero_Estudiante, #id_Lugar_Nacimiento_Estudiante, #id_Entidad_Federal_Estudiante, #id_Fecha_Registro_Estudiante {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Editar Estudiante</h1>
+        <form method="post" class="mt-4">
+            {% csrf_token %}
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>Cedula del Estudiante</td>
+                        <td>{{ form.Cedula_Estudiante }}</td>
+                    </tr>
+                    <tr>
+                        <td>Nombres</td>
+                        <td>{{ form.Nombres_Estudiante }}</td>
+                    </tr>
+                    <tr>
+                        <td>Apellidos</td>
+                        <td>{{ form.Apellidos_Estudiante }}</td>
+                    </tr>
+                    <tr>
+                        <td>Fecha de Nacimiento</td>
+                        <td>{{ form.Fecha_Nacimiento_Estudiante }}</td>
+                    </tr>
+                    <tr>
+                        <td>Genero</td>
+                        <td>{{ form.Genero_Estudiante }}</td>
+                    </tr>
+                    <tr>
+                        <td>Lugar de Nacimiento</td>
+                        <td>{{ form.Lugar_Nacimiento_Estudiante }}</td>
+                    </tr>
+                    <tr>
+                        <td>Entidad Federal</td>
+                        <td>{{ form.Entidad_Federal_Estudiante }}</td>
+                    </tr>
+                    <tr>
+                        <td>Fecha de Registro</td>
+                        <td>{{ form.Fecha_Registro_Estudiante }}</td>
+                    </tr>
+                    <tr>
+                        <td>Cedula del Representante</td>
+                        <td>{{ form.Cedula_Representante }}</td>
+                    </tr>
+                    <!-- Agregar más campos según tus necesidades -->
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            <a href="{% url 'lista_estudiantes' %}" class="btn btn-secondary mb-6">Volver a la lista</a>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+</body>
+</html>
+<script>
+    // In your Javascript (external .js resource or <script> tag)
+        $(document).ready(function() {
+        $('#id_Cedula_Representante').select2();
+        $('#id_Entidad_Federal_Estudiante').select2();
+        });
+    </script>
+{% endblock %}
+

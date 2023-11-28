@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar Institución - {{ institucion.Nombre_Institucion }}</title>
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h2 class="mb-4">Eliminar Institución - {{ institucion.Nombre_Institucion }}</h2>
+        <div class="alert alert-warning" role="alert">
+            ¿Estás seguro de que deseas eliminar esta institución?
+        </div>
+        <form method="post" action="{% url 'eliminar_institucion' codigo_institucion=institucion.Codigo_Institucion %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <a href="{% url 'lista_instituciones' %}" class="btn btn-secondary ms-2">Cancelar</a>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS (optional) -->
+</body>
+</html>
+{% endblock %}

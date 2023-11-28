@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mt-5">Lista de Representantes</h1>
+    <a href="{% url 'agregar_representante' %}" class="btn btn-primary mb-3">Agregar Representante</a>
+    <table class="table" id="representantesTable">
+        <thead>
+            <tr>
+                <th>Cédula</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for representante in representantes %}
+            <tr>
+                <td>{{ representante.Cedula_Representante }}</td>
+                <td>{{ representante.Nombres_Representante }}</td>
+                <td>{{ representante.Apellidos_Representante }}</td>
+                <td>
+                    <a href="{% url 'editar_representante' representante.Cedula_Representante %}" class="btn btn-primary btn-sm">Editar</a>
+                    <a href="{% url 'eliminar_representante' representante.Cedula_Representante %}" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table> 
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#representantesTable').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+            }
+        });
+    });
+</script>
+
+{% endblock %}
+

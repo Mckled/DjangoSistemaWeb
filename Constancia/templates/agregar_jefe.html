@@ -1,0 +1,60 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<html>
+<head>
+    <title>Agregar Cargos</title>
+
+    <style>
+        #id_Cedula_Cargos, #id_Nombres_Cargos, #id_Apellidos_Cargos, #id_Telefono_Cargos, #id_Fecha_Ingreso_Cargos, #id_Fecha_Egreso_Cargos, #id_Cargo_Cargos {
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Agregar Cargos</h1>
+        <form method="post" class="mt-4">
+            {% csrf_token %}
+            <table class="table">
+                <tbody> 
+                    <tr>
+                        <td>Cedula</td>
+                        <td>{{ form.Cedula_Cargos }}</td>
+                    </tr>
+                    <tr>
+                        <td>Nombres</td>
+                        <td>{{ form.Nombres_Cargos }}</td>
+                    </tr>
+                    <tr>
+                        <td>Apellidos</td>
+                        <td>{{ form.Apellidos_Cargos }}</td>
+                    </tr>
+                    <tr>
+                        <td>Telefono</td>
+                        <td>{{ form.Telefono_Cargos }}</td>
+                    </tr>
+                    <tr>
+                        <td>Fecha de ingreso</td>
+                        <td>{{ form.Fecha_Ingreso_Cargos }}</td>
+                    </tr>
+                    <tr>
+                        <td>Fecha de egreso</td>
+                        <td>{{ form.Fecha_Egreso_Cargos }}</td>
+                    </tr>
+                    <tr>
+                        <td>Tipo de cargo</td>
+                        <td>{{ form.Cargo_Cargos }}</td>
+                    </tr>
+                    <!-- Agregar más campos según tus necesidades -->
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="{% url 'lista_jefes' %}" class="btn btn-secondary mb-6">Volver a la lista</a>
+        </form>
+    </div>
+</body>
+</html>
+
+{% endblock %}
+

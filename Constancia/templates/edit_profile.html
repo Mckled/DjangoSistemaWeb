@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Perfil</title>
+
+    <style>
+        #id_Nombres_Completo, #id_username, #id_email{
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Editar Perfil</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                </form>
+                <a href="{% url 'view_profile' %}" class="btn btn-secondary mt-3">Cancelar</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

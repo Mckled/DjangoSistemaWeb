@@ -1,0 +1,53 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Lista de Instituciones</title>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Lista de Instituciones</h2>
+            <a href="{% url 'agregar_institucion' %}" class="btn btn-primary mb-3">Agregar Institución</a>
+            <table class="table" id="institucionesTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Ubicación</th>
+                        <th>Correo</th>
+                        <th>Teléfono</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for institucion in instituciones %}
+                        <tr>
+                            <td>{{ institucion.Codigo_Institucion }}</td>
+                            <td>{{ institucion.Nombre_Institucion }}</td>
+                            <td>{{ institucion.Ubicacion_Institucion }}</td>
+                            <td>{{ institucion.Correo_Institucion }}</td>
+                            <td>{{ institucion.Telefono_Institucion }}</td>
+                            <td>
+                                <a href="{% url 'editar_institucion' codigo_institucion=institucion.Codigo_Institucion%}" class="btn btn-primary btn-sm">Editar</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <script>
+            $(document).ready(function() {
+                $('#institucionesTable').DataTable({
+                    "language": {
+                        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
+{% endblock %}
+
+

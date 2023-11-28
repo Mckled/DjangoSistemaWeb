@@ -1,0 +1,11 @@
+<!-- delete_user.html -->
+{% extends 'index.html' %}
+
+{% block content %}
+  <h2>Are you sure you want to delete this user?</h2>
+  <form method="post" style="display: inline;">
+    {% csrf_token %}
+    <button type="submit">Yes, delete</button>
+  </form>
+  <a href="{% url 'user_list' %}">No, cancel</a>
+{% endblock %}

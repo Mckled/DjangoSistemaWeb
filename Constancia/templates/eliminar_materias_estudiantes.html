@@ -1,0 +1,12 @@
+<!-- eliminar_materias_estudiantes.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Confirmar eliminación</h1>
+  <p>¿Estás seguro de que deseas eliminar estas materias de estudiantes?</p>
+  <form method="post" action="{% url 'eliminar_materias_estudiantes' materia_estudiante.id_materias_estudiantes %}">
+    {% csrf_token %}
+    <button type="submit">Sí, eliminar</button>
+  </form>
+  <a href="{% url 'lista_materias_estudiantes' %}">Cancelar</a>
+{% endblock %}

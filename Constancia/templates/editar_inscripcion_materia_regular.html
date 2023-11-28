@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<style>
+    #id_id_Inscripcion_Estudiante, #id_Materias_regular {
+        width: 50%;
+    }
+</style>
+<div class="container">
+    <h1 class="mt-5">Inscribir Materias para Bachiller no cursante</h1>
+    <form method="post" class="mt-4">
+        {% csrf_token %}
+        <table class="table">
+            <tbody> 
+                <tr>
+                    <td>Inscripcion del Estudiante</td>
+                    <td>{{ form.id_Inscripcion_Estudiante }}</td>
+                </tr>
+                <tr>
+                    <td>Materias Pendiente</td>
+                    <td>{{ form.materias_pendientes }}</td>
+                </tr>
+                <!-- Agregar más campos según tus necesidades -->
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a href="{% url 'inscripcion_materia_regular_lista' %}" class="btn btn-secondary mb-6">Volver a la lista</a>
+    </form>
+</div>
+
+{% endblock %}

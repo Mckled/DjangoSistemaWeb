@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<html>
+<head>
+    <title>Estadísticas</title>
+    <!-- Agrega aquí los enlaces a los archivos de estilo de Bootstrap si no lo has hecho -->
+</head>
+<body>
+    <div class="container">
+        <li class="list-group-item"><strong>Bienvenido:</strong> {{ user.Nombres_Completo }}</li>
+        <h1 class="mt-4 mb-4">Registros de estudiantes e inscripciones</h1>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Total de Estudiantes</h5>
+                        <p class="card-text">{{ total_estudiantes }}</p>
+                        <h5 class="card-title">Estudiantes Femeninos</h5>
+                        <p class="card-text">{{ total_femenino }}</p>
+                        <h5 class="card-title">Estudiantes Masculinos</h5>
+                        <p class="card-text">{{ total_masculino  }}</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Estudiantes Inscritos</h5>
+                        <p class="card-text">{{ total_inscripciones }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Estudiantes Regulares</h5>
+                        <p class="card-text">{{ total_Regulares }}</p>
+                        <h5 class="card-title">Estudiantes Regulares con Metrias pendientes</h5>
+                        <p class="card-text">{{ total_pendiente }}</p>
+                        <h5 class="card-title">Estudiantes Repitiente</h5>
+                        <p class="card-text">{{ total_repitiente }}</p>
+                        <h5 class="card-title">Bachileres no Cursantes</h5>
+                        <p class="card-text">{{ total_NoCursante }}</p>
+                    </div>
+                </div>
+            </div>
+
+        <!-- Repite la estructura de tarjetas para los demás datos -->
+
+    </div>
+</body>
+</html>
+{% endblock %}

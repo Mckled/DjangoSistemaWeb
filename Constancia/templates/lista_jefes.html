@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mt-5">Lista de Cargos</h1>
+    <a href="{% url 'agregar_jefe' %}" class="btn btn-primary mb-3">Agregar Directora</a>
+    <table class="table" id="directorastable">
+        <thead>
+            <tr>
+                <th>Cédula</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Cargo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for jefe in jefes %}
+            <tr>
+                <td>{{ jefe.Cedula_Cargos }}</td>
+                <td>{{ jefe.Nombres_Cargos }}</td>
+                <td>{{ jefe.Apellidos_Cargos }}</td>
+                <td>{{ jefe.Cargo_Cargos }}</td>
+                <td>
+                    <a href="{% url 'editar_jefe' jefe.id_cargos %}" class="btn btn-primary btn-sm">Editar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script>
+    $(document).ready(function() {
+        $('#directorastable').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+            }
+        });
+    });
+</script>
+{% endblock %}
+

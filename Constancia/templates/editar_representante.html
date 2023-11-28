@@ -1,0 +1,95 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Representante</title>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <style>
+        #id_Cedula_Representante, #id_Nombres_Representante, #id_Apellidos_Representante, #id_Genero_Representante, #id_Parentesco_Representante, #id_Lugar_Nacimiento_Representante, #id_Entidad_Federal_Representante, #id_Direccion_Habitacion_Representante, #id_Telefono1_Representante, #id_Telefono2_Representante, #id_Correo_Electronico_Representante, #id_Observacion_Representante {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Editar Representante</h1>
+        <form method="post" class="mb-4">
+            {% csrf_token %}
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>Cedula del Representante</td>
+                        <td>{{ form.Cedula_Representante }}</td>
+                    </tr>
+                    <tr>
+                        <td>Nombres</td>
+                        <td>{{ form.Nombres_Representante }}</td>
+                    </tr>
+                    <tr>
+                        <td>Apellidos</td>
+                        <td>{{ form.Apellidos_Representante }}</td>
+                    </tr>
+                    <tr>
+                        <td>Fecha de Nacimiento</td>
+                        <td>{{ form.Fecha_Nacimiento_Representante }}</td>
+                    </tr>
+                    <tr>
+                        <td>Genero</td>
+                        <td>{{ form.Genero_Representante }}</td>
+                    </tr>
+                    <tr>
+                        <td>Parentesco</td>
+                        <td>{{ form.Parentesco_Representante }}</td>
+                    </tr>
+                    <tr>
+                        <td>Lugar de Nacimiento</td>
+                        <td>{{ form.Lugar_Nacimiento_Representante }}</td>
+                    </tr>
+                    <tr>
+                        <td>Entidad Federal</td>
+                        <td>{{ form.Entidad_Federal_Representante }}</td>
+                    </tr>
+                    <tr> 
+                        <td>Direccion de Habitacion</td>
+                        <td>{{ form.Direccion_Habitacion_Representante }}</td>
+                    </tr>
+                    <tr>
+                        <td>Telefono 1</td>
+                        <td>{{ form.Telefono1_Representante }}</td>
+                    </tr>
+                    <tr>
+                        <td>Telefono 2 (Opcional)</td>
+                        <td>{{ form.Telefono2_Representante }}</td>
+                    </tr>
+                    <tr>
+                        <td>Correo (Opcional)</td>
+                        <td>{{ form.Correo_Electronico_Representante }}</td>
+                    </tr>
+                    <tr>
+                        <td>Observacion (Opcional)</td>
+                        <td>{{ form.Observacion_Representante }}</td>
+                    </tr>
+                    <!-- Agregar más campos según tus necesidades -->
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            <a href="{% url 'lista_representantes' %}" class="btn btn-secondary mb-6">Volver a la lista</a>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+</body>
+</html>
+<script>
+    // In your Javascript (external .js resource or <script> tag)
+        $(document).ready(function() {
+        $('#id_Entidad_Federal_Representante').select2();
+        });
+    </script>
+{% endblock %}
+
+
+

@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Grados y Materias</title>
+    <style>
+        #id_Id_Materia, #id_Id_Grado {
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Editar Grados y Materias</h1>
+        <form method="post" class="mt-4">
+            {% csrf_token %}
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>{{ form.Materias.label_tag }}</td>
+                        <td>{{ form.Materias }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.Id_Grado.label_tag }}</td>
+                        <td>{{ form.Id_Grado }}</td>
+                    </tr>
+                    <!-- Agregar más campos según tus necesidades -->
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            <a href="{% url 'lista_materias_seccion' %}" class="btn btn-secondary mb-6">Volver a la lista</a>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock %}

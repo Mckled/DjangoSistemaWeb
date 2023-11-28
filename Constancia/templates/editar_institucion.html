@@ -1,0 +1,51 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Institución</title>
+
+    <style>
+        #id_Codigo_Institucion, #id_Nombre_Institucion, #id_Ubicacion_Institucion, #id_Correo_Institucion, #id_Telefono_Institucion {
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Editar Institución</h1>
+        <form method="post" class="mt-4">
+            {% csrf_token %}
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>Codigo de la Institución</td>
+                        <td>{{ form.Codigo_Institucion }}</td>
+                    </tr>
+                    <tr>
+                        <td>Nombre de la Institución</td>
+                        <td>{{ form.Nombre_Institucion }}</td>
+                    </tr>
+                    <tr>
+                        <td>Ubicacion de la Institución</td>
+                        <td>{{ form.Ubicacion_Institucion }}</td>
+                    </tr>
+                    <tr>
+                        <td>Correo de la Institución</td>
+                        <td>{{ form.Correo_Institucion }}</td>
+                    </tr>
+                    <tr>
+                        <td>Telefono de la Institución </td>
+                        <td>{{ form.Telefono_Institucion }}</td>
+                    </tr>
+                    <!-- Agregar más campos según tus necesidades -->
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="{% url 'lista_instituciones' %}" class="btn btn-secondary mb-6">Volver a la lista</a>
+  </form>
+</body>
+</html>
+{% endblock %}

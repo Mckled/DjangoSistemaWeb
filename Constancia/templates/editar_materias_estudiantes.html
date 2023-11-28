@@ -1,0 +1,12 @@
+<!-- editar_materias_estudiantes.html -->
+{% extends 'index.html' %}
+
+{% block content %}
+  <h1>Editar Materias de Estudiantes</h1>
+  <form method="post" action="{% url 'editar_materias_estudiantes' materia_estudiante.id_materias_estudiantes %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar cambios</button>
+  </form>
+  <a href="{% url 'lista_materias_estudiantes' %}">Volver a la lista</a>
+{% endblock %}

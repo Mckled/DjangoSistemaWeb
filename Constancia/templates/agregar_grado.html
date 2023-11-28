@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Salón</title>
+    <style>
+        #id_Ano_Grado, #id_Seccion_Grado {
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Agregar Grado</h1>
+        <form method="post" class="mt-4">
+            {% csrf_token %}
+            <table class="table">
+                <tbody> 
+                    <tr>
+                        <td>Año</td>
+                        <td>{{ form.Ano_Grado }}</td>
+                    </tr>
+                    <tr>
+                        <td>Seccion</td>
+                        <td>{{ form.Seccion_Grado }}</td>
+                    </tr>
+                    <!-- Agregar más campos según tus necesidades -->
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="{% url 'lista_grados' %}" class="btn btn-secondary mb-6">Volver a la lista</a>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock %}

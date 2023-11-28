@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mt-5">Lista de Estudiantes</h1>
+    <a href="{% url 'agregar_estudiante' %}" class="btn btn-primary mb-3">Agregar Estudiante</a>
+    <a href="{% url 'generar_informe_estudiantes' %}" class="btn btn-dark mb-3">Informe</a>
+    <table class="table" id="tabla1">
+        <thead>
+            <tr>
+                <th>Cédula</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for estudiante in estudiantes %}
+            <tr>
+                <td>{{ estudiante.Cedula_Estudiante }}</td>
+                <td>{{ estudiante.Nombres_Estudiante }}</td>
+                <td>{{ estudiante.Apellidos_Estudiante }}</td>
+                <td>
+                    <a href="{% url 'editar_estudiante' estudiante.Cedula_Estudiante %}" class="btn btn-primary btn-sm">Editar</a>
+                    <a href="{% url 'eliminar_estudiante' estudiante.Cedula_Estudiante %}" class="btn btn-danger btn-sm">Eliminar</a>
+                    <a href="{% url 'generar_constancia_estudios' estudiante.Cedula_Estudiante %}" class="btn btn-success btn-sm" target="_blank">Constancia</a>
+                    <a href="{% url 'generar_informacion_alumno' estudiante.Cedula_Estudiante %}" class="btn btn-dark btn-sm" target="_blank">Incripcion</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#tabla1').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+            }
+        });
+    });
+</script>
+
+{% endblock %}

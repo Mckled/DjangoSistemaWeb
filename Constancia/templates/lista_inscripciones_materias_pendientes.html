@@ -1,0 +1,56 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Inscripciones de Materias Pendientes</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Lista de Inscripciones de Materias Pendientes</h1>
+        <a href="{% url 'agregar_inscripcion_materia_pendiente' %}" class="btn btn-primary mb-3">Agregar Inscripción de Materia Pendiente</a>
+        <table class="table" id="inscripcionesMateriasPendientesTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>ID Inscripción</th>
+                    <th>Materias Pendientes</th>
+                    <th>Grado de materias pendientes</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for inscripcion_materia_pendiente in inscripciones_materias_pendientes %}
+                <tr>
+                    <td>{{ inscripcion_materia_pendiente.id_Inscripcion_Pendiente }}</td>
+                    <td>{{ inscripcion_materia_pendiente.id_Inscripcion_Estudiante }}</td>
+                    <td>{{ inscripcion_materia_pendiente.get_materias_display_4 }}</td>
+                    <td>{{ inscripcion_materia_pendiente.Id_Grado }}</td>
+                    <td>
+                        <a href="{% url 'editar_inscripcion_materia_pendiente' inscripcion_materia_pendiente.id_Inscripcion_Pendiente %}" class="btn btn-primary btn-sm">Editar</a>
+                        <a href="{% url 'eliminar_inscripcion_materia_pendiente' inscripcion_materia_pendiente.id_Inscripcion_Pendiente %}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+    <!-- DataTables Spanish Language -->
+    <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#inscripcionesMateriasPendientesTable').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+{% endblock %}

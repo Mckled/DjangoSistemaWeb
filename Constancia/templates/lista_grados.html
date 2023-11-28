@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Salones</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Lista de Grados</h1>
+        <a href="{% url 'agregar_grado' %}" class="btn btn-primary mb-3">Agregar Salon</a>
+        <table class="table mt-4" id="salonesTable">
+            <thead>
+                <tr>
+                    <th>Año</th>
+                    <th>Sección</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for grado in grados %}
+                    <tr>
+                        <td>{{ grado.Ano_Grado }}</td>
+                        <td>{{ grado.Seccion_Grado }}</td>
+                        <td>
+                            <a href="{% url 'editar_grado' grado.ID_Grado %}" class="btn btn-primary btn-sm">Editar</a>
+                            <a href="{% url 'eliminar_grado' grado.ID_Grado %}" class="btn btn-danger btn-sm">Eliminar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('#salonesTable').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+{% endblock %}

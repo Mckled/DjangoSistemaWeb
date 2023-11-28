@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mt-5">Lista de Inscripciones de Estudiantes</h1>
+    <a href="{% url 'agregar_inscripcion_estudiante' %}" class="btn btn-primary mb-3">Agregar Inscripción de Estudiante</a>
+    <a href="{% url 'generar_informe_inscripcion' %}" class="btn btn-dark mb-3">Informe</a>
+
+    <table class="table" id="inscripcionesTable">
+        <thead>
+            <tr>
+                <th>Cédula Estudiante</th>
+                <th>Condición</th>
+                <th>Grado</th>
+                <th>Año Escolar</th>
+                <th>Fecha de Inscripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead> 
+        <tbody>
+            {% for inscripcion_estudiante in inscripciones_estudiantes %}
+            <tr>
+                <td>{{ inscripcion_estudiante.Cedula_Estudiante }}</td>
+                <td>{{ inscripcion_estudiante.Condicion_Inscripcion }}</td>
+                <td>{{ inscripcion_estudiante.Id_Materia_Seccion }}</td>
+                <td>{{ inscripcion_estudiante.Ano_Escolar }}</td>
+                <td>{{ inscripcion_estudiante.Fecha_Inscripcion }}</td>
+                <td> 
+                    <a href="{% url 'eliminar_inscripcion_estudiante' inscripcion_estudiante.id_Inscripcion_Estudiante%}" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script>
+    $(document).ready(function() {
+        $('#inscripcionesTable').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+            }
+        });
+    });
+</script>
+{% endblock %}
+

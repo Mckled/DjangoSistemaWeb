@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h1>Listado de Materias de Estudiantes</h1>
+
+    <table class="table" id="materiasEstudiantesTable">
+      <thead>
+        <tr>
+          <th>ID Materias Estudiantes</th>
+          <th>ID Materia Sec</th>
+          <th>ID Inscripción</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for materia_estudiante in materias_estudiantes %}
+          <tr>
+            <td>{{ materia_estudiante.id_materias_estudiantes }}</td>
+            <td>{{ materia_estudiante.Id_materia_sec }}</td>
+            <td>{{ materia_estudiante.id_inscripcion }}</td>
+            <td>
+              <a href="{% url 'editar_materias_estudiantes' materia_estudiante.id_materias_estudiantes %}" class="btn btn-primary btn-sm">Editar</a>
+              <a href="{% url 'eliminar_materias_estudiantes' materia_estudiante.id_materias_estudiantes %}" class="btn btn-danger btn-sm">Eliminar</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <a href="{% url 'agregar_materias_estudiantes' %}" class="btn btn-success">Agregar nuevas materias</a>
+  </div>
+
+  <!-- Asegúrate de tener los scripts de jQuery y DataTables cargados antes de este bloque de script -->
+  <script>
+    $(document).ready(function() {
+      $('#materiasEstudiantesTable').DataTable();
+    });
+  </script>
+{% endblock %}
+
+
